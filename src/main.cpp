@@ -38,7 +38,10 @@ void initialize() {
   // chassis.odom_tracker_right_set(&right_tracker);
   // chassis.odom_tracker_left_set(&left_tracker);
   // chassis.odom_tracker_back_set(&horiz_tracker);  // Replace `back` to `front` if your tracker is in the front!
-
+  
+  //is this placement good?
+  chassis.pid_tuner_button_set(pros::E_CONTROLLER_DIGITAL_Y, pros::E_CONTROLLER_DIGITAL_A);
+  
   // Configure your chassis controls
   chassis.opcontrol_curve_buttons_toggle(true);   // Enables modifying the controller curve with buttons on the joysticks
   chassis.opcontrol_drive_activebrake_set(0.0);   // Sets the active brake kP. We recommend ~2.  0 will disable.
@@ -200,6 +203,7 @@ void ez_template_extras() {
     //  When enabled:
     //  * use A and Y to increment / decrement the constants
     //  * use the arrow keys to navigate the constants
+
     if (master.get_digital_new_press(DIGITAL_X))
       chassis.pid_tuner_toggle();
 
